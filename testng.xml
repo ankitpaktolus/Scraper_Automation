@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/rosha/IdeaProjects/ALF">
+        <classes>
+            <class name="scraperTest.LoginTest"/>
+            <class name="scraperTest.FeedTemplateTest"/>
+            <class name="scraperTest.CMSTemplateTest"/>
+            <class name="scraperTest.AdvertiserDashboardTest"/>
+            <class name="scraperTest.AlexanderBGCTest"/>
+<!--            <class name="scraperTest.CampaignBuilderTest"/>-->
+<!--            <class name="scraperTest.SearchTest"/>-->
+        </classes>
+    </test>
+</suite>

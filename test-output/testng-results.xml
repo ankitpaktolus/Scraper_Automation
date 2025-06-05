@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="29" passed="29" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-06-27T11:44:10 IST" name="All Test Suite" finished-at="2024-06-27T11:49:19 IST" duration-ms="308675">
+    <groups>
+    </groups>
+    <test started-at="2024-06-27T11:44:10 IST" name="C:/Users/rosha/IdeaProjects/ALF" finished-at="2024-06-27T11:49:19 IST" duration-ms="308675">
+      <class name="scraperTest.AdvertiserDashboardTest">
+        <test-method signature="fillApplicantDetails()[pri:1, instance:scraperTest.AdvertiserDashboardTest@6629ad09]" started-at="2024-06-27T11:45:56 IST" name="fillApplicantDetails" finished-at="2024-06-27T11:46:07 IST" duration-ms="10634" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillApplicantDetails -->
+        <test-method signature="fillPhysicalAddressDetails()[pri:2, instance:scraperTest.AdvertiserDashboardTest@6629ad09]" started-at="2024-06-27T11:46:07 IST" name="fillPhysicalAddressDetails" finished-at="2024-06-27T11:46:10 IST" duration-ms="2742" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillPhysicalAddressDetails -->
+        <test-method signature="fillPreviousPhysicalAddressDetails()[pri:3, instance:scraperTest.AdvertiserDashboardTest@6629ad09]" started-at="2024-06-27T11:46:10 IST" name="fillPreviousPhysicalAddressDetails" finished-at="2024-06-27T11:46:15 IST" duration-ms="5050" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillPreviousPhysicalAddressDetails -->
+        <test-method signature="fillEmploymentInformationDetails()[pri:4, instance:scraperTest.AdvertiserDashboardTest@6629ad09]" started-at="2024-06-27T11:46:15 IST" name="fillEmploymentInformationDetails" finished-at="2024-06-27T11:46:21 IST" duration-ms="6143" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillEmploymentInformationDetails -->
+        <test-method signature="verifyDeleteAddEmployment()[pri:5, instance:scraperTest.AdvertiserDashboardTest@6629ad09]" started-at="2024-06-27T11:46:21 IST" name="verifyDeleteAddEmployment" finished-at="2024-06-27T11:46:28 IST" duration-ms="6683" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDeleteAddEmployment -->
+        <test-method signature="fillAddEmploymentInformationDetails()[pri:6, instance:scraperTest.AdvertiserDashboardTest@6629ad09]" started-at="2024-06-27T11:46:28 IST" name="fillAddEmploymentInformationDetails" finished-at="2024-06-27T11:46:35 IST" duration-ms="7805" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillAddEmploymentInformationDetails -->
+        <test-method signature="fillAdditionalMonthlyIncomeDetails()[pri:7, instance:scraperTest.AdvertiserDashboardTest@6629ad09]" started-at="2024-06-27T11:46:35 IST" name="fillAdditionalMonthlyIncomeDetails" finished-at="2024-06-27T11:46:42 IST" duration-ms="6928" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillAdditionalMonthlyIncomeDetails -->
+      </class> <!-- scraperTest.AdvertiserDashboardTest -->
+      <class name="scraperTest.SearchTest">
+        <test-method signature="verifyApplicationId()[pri:1, instance:scraperTest.SearchTest@27df0f3d]" started-at="2024-06-27T11:48:24 IST" name="verifyApplicationId" finished-at="2024-06-27T11:48:43 IST" duration-ms="18666" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyApplicationId -->
+        <test-method signature="verifyByName()[pri:2, instance:scraperTest.SearchTest@27df0f3d]" started-at="2024-06-27T11:48:43 IST" name="verifyByName" finished-at="2024-06-27T11:48:49 IST" duration-ms="6463" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyByName -->
+        <test-method signature="verifyByDraft()[pri:3, instance:scraperTest.SearchTest@27df0f3d]" started-at="2024-06-27T11:48:49 IST" name="verifyByDraft" finished-at="2024-06-27T11:48:59 IST" duration-ms="9506" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyByDraft -->
+        <test-method signature="verifyByApproved()[pri:4, instance:scraperTest.SearchTest@27df0f3d]" started-at="2024-06-27T11:48:59 IST" name="verifyByApproved" finished-at="2024-06-27T11:49:09 IST" duration-ms="9897" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyByApproved -->
+      </class> <!-- scraperTest.SearchTest -->
+      <class name="scraperTest.AlexanderBGCTest">
+        <test-method signature="fillCoApplicantDetails()[pri:1, instance:scraperTest.AlexanderBGCTest@43e1692f]" started-at="2024-06-27T11:46:42 IST" name="fillCoApplicantDetails" finished-at="2024-06-27T11:46:56 IST" duration-ms="13386" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillCoApplicantDetails -->
+        <test-method signature="fillCoApplicantPhysicalAddressDetails()[pri:2, instance:scraperTest.AlexanderBGCTest@43e1692f]" started-at="2024-06-27T11:46:56 IST" name="fillCoApplicantPhysicalAddressDetails" finished-at="2024-06-27T11:46:58 IST" duration-ms="2361" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillCoApplicantPhysicalAddressDetails -->
+        <test-method signature="fillCoApplicantPreviousPhysicalAddressDetails()[pri:3, instance:scraperTest.AlexanderBGCTest@43e1692f]" started-at="2024-06-27T11:46:58 IST" name="fillCoApplicantPreviousPhysicalAddressDetails" finished-at="2024-06-27T11:47:03 IST" duration-ms="4733" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillCoApplicantPreviousPhysicalAddressDetails -->
+        <test-method signature="fillCoApplicantEmploymentInformation()[pri:4, instance:scraperTest.AlexanderBGCTest@43e1692f]" started-at="2024-06-27T11:47:03 IST" name="fillCoApplicantEmploymentInformation" finished-at="2024-06-27T11:47:07 IST" duration-ms="4353" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillCoApplicantEmploymentInformation -->
+        <test-method signature="verifyDeleteAddCoEmployment()[pri:5, instance:scraperTest.AlexanderBGCTest@43e1692f]" started-at="2024-06-27T11:47:07 IST" name="verifyDeleteAddCoEmployment" finished-at="2024-06-27T11:47:14 IST" duration-ms="6592" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDeleteAddCoEmployment -->
+        <test-method signature="fillAddCoEmploymentInformation()[pri:6, instance:scraperTest.AlexanderBGCTest@43e1692f]" started-at="2024-06-27T11:47:14 IST" name="fillAddCoEmploymentInformation" finished-at="2024-06-27T11:47:21 IST" duration-ms="7637" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillAddCoEmploymentInformation -->
+        <test-method signature="fillCoApplicantAdditionalMonthlyIncome()[pri:7, instance:scraperTest.AlexanderBGCTest@43e1692f]" started-at="2024-06-27T11:47:21 IST" name="fillCoApplicantAdditionalMonthlyIncome" finished-at="2024-06-27T11:47:28 IST" duration-ms="6589" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillCoApplicantAdditionalMonthlyIncome -->
+      </class> <!-- scraperTest.AlexanderBGCTest -->
+      <class name="scraperTest.CampaignBuilderTest">
+        <test-method signature="applicationSave()[pri:1, instance:scraperTest.CampaignBuilderTest@3e7c4815]" started-at="2024-06-27T11:47:28 IST" name="applicationSave" finished-at="2024-06-27T11:47:44 IST" duration-ms="15881" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- applicationSave -->
+        <test-method signature="verifyEditDraft()[pri:2, instance:scraperTest.CampaignBuilderTest@3e7c4815]" started-at="2024-06-27T11:47:44 IST" name="verifyEditDraft" finished-at="2024-06-27T11:48:01 IST" duration-ms="17530" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyEditDraft -->
+        <test-method signature="applicationSubmit()[pri:3, instance:scraperTest.CampaignBuilderTest@3e7c4815]" started-at="2024-06-27T11:48:01 IST" name="applicationSubmit" finished-at="2024-06-27T11:48:24 IST" duration-ms="22470" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- applicationSubmit -->
+      </class> <!-- scraperTest.CampaignBuilderTest -->
+      <class name="scraperTest.LoginTest">
+        <test-method is-config="true" signature="launchURL()[pri:0, instance:scraperTest.LoginTest@12c60152]" started-at="2024-06-27T11:44:10 IST" name="launchURL" finished-at="2024-06-27T11:44:47 IST" duration-ms="36155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchURL -->
+        <test-method signature="passwordForget()[pri:1, instance:scraperTest.LoginTest@12c60152]" started-at="2024-06-27T11:44:47 IST" name="passwordForget" finished-at="2024-06-27T11:44:52 IST" duration-ms="5165" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- passwordForget -->
+        <test-method signature="invalidLogin()[pri:2, instance:scraperTest.LoginTest@12c60152]" started-at="2024-06-27T11:44:52 IST" name="invalidLogin" finished-at="2024-06-27T11:44:54 IST" duration-ms="1734" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidLogin -->
+        <test-method signature="userLogin()[pri:3, instance:scraperTest.LoginTest@12c60152]" started-at="2024-06-27T11:44:54 IST" name="userLogin" finished-at="2024-06-27T11:44:59 IST" duration-ms="5079" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userLogin -->
+        <test-method signature="clickSelectLot()[pri:4, instance:scraperTest.LoginTest@12c60152]" started-at="2024-06-27T11:44:59 IST" name="clickSelectLot" finished-at="2024-06-27T11:45:01 IST" duration-ms="2396" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickSelectLot -->
+        <test-method signature="clickCreateApplication()[pri:5, instance:scraperTest.LoginTest@12c60152]" started-at="2024-06-27T11:45:01 IST" name="clickCreateApplication" finished-at="2024-06-27T11:45:08 IST" duration-ms="6299" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickCreateApplication -->
+        <test-method is-config="true" signature="userLogout()[pri:0, instance:scraperTest.LoginTest@12c60152]" started-at="2024-06-27T11:49:09 IST" name="userLogout" finished-at="2024-06-27T11:49:19 IST" duration-ms="10611" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userLogout -->
+      </class> <!-- scraperTest.LoginTest -->
+      <class name="scraperTest.FeedTemplateTest">
+        <test-method signature="fillDealDetailNew()[pri:1, instance:scraperTest.FeedTemplateTest@692e028d]" started-at="2024-06-27T11:45:08 IST" name="fillDealDetailNew" finished-at="2024-06-27T11:45:22 IST" duration-ms="13930" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillDealDetailNew -->
+        <test-method signature="fillCollateralInformationNew()[pri:2, instance:scraperTest.FeedTemplateTest@692e028d]" started-at="2024-06-27T11:45:22 IST" name="fillCollateralInformationNew" finished-at="2024-06-27T11:45:45 IST" duration-ms="23227" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillCollateralInformationNew -->
+        <test-method signature="selectAdditionalProductNew()[pri:3, instance:scraperTest.FeedTemplateTest@692e028d]" started-at="2024-06-27T11:45:45 IST" name="selectAdditionalProductNew" finished-at="2024-06-27T11:45:56 IST" duration-ms="11551" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectAdditionalProductNew -->
+      </class> <!-- scraperTest.FeedTemplateTest -->
+    </test> <!-- C:/Users/rosha/IdeaProjects/ALF -->
+  </suite> <!-- All Test Suite -->
+</testng-results>
