@@ -1,11 +1,11 @@
 package scraperTest;
 
-import scraperPages.LoginPage;
 import applicationUtility.ActionUtils;
 import baselibrary.BaseLibrary;
 import io.qameta.allure.Step;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import scraperPages.LoginPage;
 
 public class LoginTest extends BaseLibrary
 {

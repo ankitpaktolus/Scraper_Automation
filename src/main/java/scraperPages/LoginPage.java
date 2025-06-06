@@ -2,7 +2,6 @@ package scraperPages;
 
 import applicationUtility.ActionUtils;
 import baselibrary.BaseLibrary;
-import excelUtility.ExcelUtility;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -18,56 +17,20 @@ public class LoginPage extends BaseLibrary
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "//div[contains(text(),'Login into your account')]")
-    WebElement verifyLoginPage;
-    @FindBy(xpath = "//a[contains(text(),'Did you forget your password?')]")
-    WebElement forgetPassword;
-    @FindBy(xpath = "//div[contains(text(),'Reset password')]")
-    WebElement verifyResetPage;
-    @FindBy(xpath = "//button[contains(text(),' Send email ')]")
-    WebElement sendEmail;
-    @FindBy(xpath = "//LI[contains(text(),'The email does not exist.')]")
-    WebElement resetPageError;
-    @FindBy(xpath = "//img[@src='https://alfosv2-dev.americasleading.com/alf_images/arrow_left_alt.svg']")
-    WebElement goBack;
     @FindBy(xpath = "//input[@type='email']")
     WebElement userName;
     @FindBy(xpath = "//input[@type='password']")
     WebElement password;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement submit;
-    @FindBy(xpath = "//li[@class='dropdown language language-menu']")  ////div[@class='profile-details']//..//..//..//a[@class='dropdown-toggle']
-    WebElement change_language;
-    @FindBy(xpath = "//a[contains(text(),'EN')]")
-    WebElement english;
     @FindBy(xpath = "//span[contains(text(),'Home')]")
     WebElement Home;
-    @FindBy(xpath = "//tbody//tr//td[@class='sorting_1']")
-    WebElement AdvertiserName;
-    @FindBy(xpath = "//li[contains(text(),'Email not found. Please contact support team for further assistance.')]")
-    WebElement loginError;
-    @FindBy(xpath = "//h1[contains(text(),'Create Finance Application')]")
-    WebElement verifyApplicationPage;
-    @FindBy(xpath = "(//a[@class='menu-link'])[4]") //(//ul[@class='treeview-menu  menu-open']//li[2])
-    WebElement create_application;
     @FindBy(xpath = "//li[@class='dropdown dropdown-width']")
     WebElement userProfile;
-    @FindBy(xpath = "//i[@class='fa fa-sign-out fa-fw']")
+    @FindBy(xpath = "//button[@type='submit']")
     WebElement logout;
     @FindBy(xpath = " //span[contains(text(),'Advertisement')]")
     WebElement advertisement;
-    @FindBy(xpath = "(//ul[@class= 'treeview-menu   menu-open']//li//a)[1]")
-    WebElement advertiserDashboard;
-    @FindBy(xpath = "//tbody//tr//td//div[@class ='org-span gap-12']//a[@aria-label='Feeds']")
-    WebElement feed;
-    @FindBy(xpath = "//input[@placeholder='Search']")
-    WebElement Search;
-//    WebElement Search= driver.findElement(By.xpath("//input[@placeholder='Search']"));
-    @FindBy(xpath = "//p[contains(text(),'Total Active Feed Records')]//..//p[@class='feed-number text-center']")
-    WebElement totalActiveRecords;
-    @FindBy(xpath = "//img[@aria-label='Advertiser Inventory']")
-    WebElement ViewInventory;
-
 
     public void deleteAllure(){
         String pathFolder = "C:\\Project\\DA\\ALF\\allure-results";
@@ -100,34 +63,6 @@ public class LoginPage extends BaseLibrary
             }
         }
         return folder.delete();
-    }
-
-    public void forgetPassword(){
-        SoftAssert soft = new SoftAssert();
-        ActionUtils.click(change_language);
-        ActionUtils.click(english);
-        ActionUtils.click(forgetPassword);
-        String screen_title = ActionUtils.get_text(verifyResetPage);
-        soft.assertEquals(screen_title,"Reset password");
-        ActionUtils.set_text(userName, ExcelUtility.excel("Login",0));
-        ActionUtils.click(sendEmail);
-        String pageError = ActionUtils.get_text(resetPageError);
-        soft.assertEquals(pageError,"The email does not exist.");
-        actionUtils.screenshot();
-        ActionUtils.click(goBack);
-        soft.assertAll();
-    }
-
-    public void inputUserInValidLogin(){
-        SoftAssert soft = new SoftAssert();
-        String screen_title = ActionUtils.get_text(verifyLoginPage);
-        soft.assertEquals(screen_title,"Login into your account");
-        ActionUtils.set_text(userName, ExcelUtility.excel("Login",0));
-        ActionUtils.set_text(password, ExcelUtility.excel("Login",2));
-        ActionUtils.click(submit);
-        String page_error = ActionUtils.get_text(loginError);
-        soft.assertEquals(page_error,"Email not found. Please contact support team for further assistance.");
-        soft.assertAll();
     }
 
     public void inputUserValidLogin(){
