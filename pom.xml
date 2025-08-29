@@ -12,8 +12,8 @@
 
     <properties>
         <java-compiler.version>22</java-compiler.version>
-<!--        <maven.compiler.source>17</maven.compiler.source>-->
-<!--        <maven.compiler.target>17</maven.compiler.target>-->
+        <!--        <maven.compiler.source>17</maven.compiler.source>-->
+        <!--        <maven.compiler.target>17</maven.compiler.target>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <allure.version>2.27.0</allure.version>
@@ -97,11 +97,11 @@
             <version>${allure-environment-writer.version}</version>
             <exclusions>
                 <exclusion>
-                    <groupId> com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-            </exclusion>
-        </exclusions>
-    </dependency>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

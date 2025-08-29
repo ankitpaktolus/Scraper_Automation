@@ -6,9 +6,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
@@ -37,7 +39,7 @@ public class ActionUtils extends BaseLibrary
     }
 
     public static void visibilityOfElement(WebElement ele){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         wait.until(ExpectedConditions.visibilityOf(ele));
     }
 
@@ -76,5 +78,14 @@ public class ActionUtils extends BaseLibrary
 
     public static void selectRecordPerPage(WebElement ele, String pageSize){
         ActionUtils.select_by_value(ele, pageSize);
+    }
+
+    public static void verifyToolTipValue(WebElement element, String getAttributeName, String verifyText){
+        SoftAssert soft = new SoftAssert();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+        String Text = element.getAttribute(getAttributeName);
+        soft.assertEquals(Text,verifyText);
+        soft.assertAll();
     }
 }

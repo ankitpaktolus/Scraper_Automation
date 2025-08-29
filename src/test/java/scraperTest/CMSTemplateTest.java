@@ -20,6 +20,8 @@ public class CMSTemplateTest extends BaseLibrary {
         cmsTemplatePage.editFeedTemplate();
         cmsTemplatePage.deactivateCMSTemplate();
         cmsTemplatePage.removeCMSTemplate();
+        cmsTemplatePage.removeUsedCMSTemplate();
+        cmsTemplatePage.deactivateUsedCMTemplate();
     }
 
 }

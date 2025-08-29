@@ -17,7 +17,7 @@ public class AdvertiserDashboardPage extends BaseLibrary
     }
     ActionUtils actionUtils = new ActionUtils();
 
-    @FindBy(xpath = "//ul//li//a[@href='https://dev.pheonix.paktolus.io/admin/advertisement/advertiser']")
+    @FindBy(xpath = "//ul//li//a[@href='https://"+env+".pheonix.paktolus.io/admin/advertisement/advertiser']")
     WebElement dashboard;
     @FindBy(xpath = "//h1[contains(text(),'Advertiser Dashboard')]")
     WebElement advertiserPageHeader;
@@ -104,4 +104,36 @@ public class AdvertiserDashboardPage extends BaseLibrary
         ActionUtils.click(activeOnlyToggle);
     }
 
+//    @FindBy(xpath = "//label[contains(text(),'Store:')]//following-sibling::form//span[@role='combobox']")
+//    WebElement storeDropdown;
+//    @FindBy(xpath = "(//label[@id='social']//..//following-sibling::div//span[@class='num-lbl'])[1]")
+//    WebElement socialImpressions;
+//    public void verifyStoreName() throws InterruptedException {
+//        ActionUtils.waitFor(3);
+////        ActionUtils.click(dashboard);
+//        ActionUtils.click(storeDropdown);
+//        List<WebElement> storeList = driver.findElements(By.xpath("//ul[@class='select2-results__options']//li"));
+//        System.out.println("Total Store Available="+ storeList.size());
+//        for (int i=0; i<=storeList.size()-1;i++){
+//            List<WebElement> storeList2 = driver.findElements(By.xpath("//ul[@class='select2-results__options']//li"));
+//            String StoreName = storeList2.get(i).getText();
+////            System.out.println("Store name = "+StoreName);
+//            storeList2.get(i).click();
+//            ActionUtils.waitFor(5);
+//            List<WebElement> platfromList = driver.findElements(By.xpath("//ul//li[@class='nav-item']//a"));
+////            System.out.println("platform count = "+ platfromList.size());
+//            for (int j=0; j<=platfromList.size()-1; j++){
+//                String platformName = platfromList.get(j).getText();
+//                if(platformName.equals("Social")){
+//                    platfromList.get(j).click();
+//                    ActionUtils.waitFor(5);
+//                    long socialImpressionsCount = Long.parseLong(ActionUtils.get_text(socialImpressions).replaceAll(",",""));
+//                    if(socialImpressionsCount==0){
+//                        System.out.println("Store name: " + StoreName + " | Social Impressions: " + socialImpressionsCount);
+//                    }
+//                }
+//            }
+//            ActionUtils.click(storeDropdown);
+//        }
+//    }
 }

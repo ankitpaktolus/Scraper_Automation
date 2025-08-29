@@ -11,6 +11,7 @@ public class BaseLibrary
 {
 
     public static WebDriver driver;
+    public static final String env = "staging";
     public void getLaunchUrl(String browser) {
 
         if (browser.equalsIgnoreCase("Chrome")) {
@@ -26,7 +27,8 @@ public class BaseLibrary
             driver = new EdgeDriver();
             System.out.println("Edge Browser is Launched ");
         }
-        driver.get("https://dev.pheonix.paktolus.io/login");
+        driver.get("https://"+env+".pheonix.paktolus.io/login");
+//        driver.get("https://insights.dealeralchemist.com/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10L));
         driver.manage().window().maximize();
         System.out.println(driver.getTitle());

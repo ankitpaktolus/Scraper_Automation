@@ -10,11 +10,12 @@ import org.testng.asserts.SoftAssert;
 public class FeedTemplatePage extends BaseLibrary {
 
     ActionUtils actionUtils = new ActionUtils();
+    String FeedTemplateName = "AnkitFeedAutomation";
     public FeedTemplatePage(){
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "//ul//li//a[@href='https://dev.pheonix.paktolus.io/admin/advertisement/feed-templates']")
+    @FindBy(xpath = "//ul//li//a[@href='https://"+env+".pheonix.paktolus.io/admin/advertisement/feed-templates']")
     WebElement feed_template;
     @FindBy(xpath = "//h1[contains(text(),'Feed Template')]")
     WebElement feed_template_header_title;
@@ -32,7 +33,6 @@ public class FeedTemplatePage extends BaseLibrary {
     WebElement missingPriceField;
     @FindBy(xpath = "//label[@for='setMilesForNewVehicle']")
     WebElement setMilesValueField;
-
     @FindBy(xpath = "//button[contains(text(),'Add')]")
     WebElement addButton;
     @FindBy(xpath = "//select[@id='attributeType']")
@@ -55,12 +55,10 @@ public class FeedTemplatePage extends BaseLibrary {
     WebElement successfullyAddAttribute;
     @FindBy(xpath = "(//input[@placeholder='Feed Header Name'])[2]")
     WebElement addFeedHeader2;
-
     @FindBy(xpath = "//button[contains(text(),'Next')]")
     WebElement next;
     @FindBy(xpath = "//button[contains(text(),'Save')]")
     WebElement save;
-
     @FindBy(xpath = "(//tbody[@id='attributeSettings']//i[@aria-label='Edit'])[3]")
     WebElement editAttribute;
     @FindBy(xpath = "//h4[contains(text(),'Edit Attribute')]")
@@ -103,7 +101,7 @@ public class FeedTemplatePage extends BaseLibrary {
         String feedHeader = ActionUtils.get_text(feed_template_header_title);
         System.out.println(feedHeader);
         ActionUtils.click(addFeed);
-        ActionUtils.set_text(feedName, "AnkitFeedAutomation");
+        ActionUtils.set_text(feedName, FeedTemplateName);
         ActionUtils.click(fileExtension);
         ActionUtils.click(selectHighlightedText);
         ActionUtils.click(selectDelimeter);
@@ -164,6 +162,7 @@ public class FeedTemplatePage extends BaseLibrary {
         addMapping();
         soft.assertAll();
     }
+
     @FindBy(xpath = "//a[contains(text(),'Mapping')]")
     WebElement mappingSection;
     @FindBy(xpath = "//select[@id='tableSelect']")
@@ -249,7 +248,7 @@ public class FeedTemplatePage extends BaseLibrary {
     public void viewFeedTemplate() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
         ActionUtils.waitFor(3);
-        ActionUtils.set_text(search, "AnkitFeedAutomation");
+        ActionUtils.set_text(search, FeedTemplateName);
         ActionUtils.waitFor(3);
         ActionUtils.click(view);
         String viewPageHeader = ActionUtils.get_text(pageHeader);
@@ -265,15 +264,15 @@ public class FeedTemplatePage extends BaseLibrary {
     public static WebElement edit;
     public void editFeedTemplate() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
-        ActionUtils.set_text(search, "AnkitFeedAutomation");
+        ActionUtils.set_text(search, FeedTemplateName);
         ActionUtils.waitFor(3);
         ActionUtils.click(edit);
         String editPageHeader = ActionUtils.get_text(pageHeader);
         System.out.println(editPageHeader);
-        soft.assertEquals(editPageHeader, "Edit Feed Template: "+"AnkitFeedAutomation");
+        soft.assertEquals(editPageHeader, "Edit Feed Template: "+FeedTemplateName);
         ActionUtils.waitFor(3);
         ActionUtils.clear(feedName);
-        ActionUtils.set_text(feedName, "AnkitEditFeedAutomation");
+        ActionUtils.set_text(feedName, FeedTemplateName +"Edit");
         actionUtils.screenshot();
         ActionUtils.scroll_till_element(next);
         ActionUtils.click(next);
@@ -358,7 +357,7 @@ public class FeedTemplatePage extends BaseLibrary {
     WebElement status;
     public void deactivateFeeTemplate() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
-        ActionUtils.set_text(search, "AnkitEditFeedAutomation");
+        ActionUtils.set_text(search, FeedTemplateName +"Edit");
         ActionUtils.waitFor(3);
         ActionUtils.click(edit);
         ActionUtils.click(statusToggleButton);
@@ -370,7 +369,7 @@ public class FeedTemplatePage extends BaseLibrary {
         ActionUtils.waitFor(3);
         ActionUtils.click(save);
         ActionUtils.waitFor(3);
-        ActionUtils.set_text(search, "AnkitEditFeedAutomation");
+        ActionUtils.set_text(search, FeedTemplateName +"Edit");
         String Status= ActionUtils.get_text(status);
         System.out.println("Status is :"+ Status);
         soft.assertEquals(Status, "Inactive");
@@ -385,7 +384,7 @@ public class FeedTemplatePage extends BaseLibrary {
         ActionUtils.waitFor(3);
         ActionUtils.click(save);
         ActionUtils.waitFor(3);
-        ActionUtils.set_text(search, "AnkitEditFeedAutomation");
+        ActionUtils.set_text(search, FeedTemplateName +"Edit");
         String changeStatus= ActionUtils.get_text(status);
         System.out.println("Status is :"+ changeStatus);
         soft.assertEquals(changeStatus, "Active");
@@ -393,10 +392,9 @@ public class FeedTemplatePage extends BaseLibrary {
         soft.assertAll();
     }
 
-
     public void removeFeedTemplate() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
-        ActionUtils.set_text(search, "AnkitEditFeedAutomation");
+        ActionUtils.set_text(search, FeedTemplateName +"Edit");
         ActionUtils.waitFor(5);
         ActionUtils.click(delete);
         ActionUtils.waitFor(5);
@@ -416,7 +414,7 @@ public class FeedTemplatePage extends BaseLibrary {
 //        soft.assertEquals(deleteFeedToastMessage,"Feed Template Delete Successfully");
 //        System.out.println("Feed Template Delete Message "+ deleteFeedToastMessage);
         ActionUtils.waitFor(10);
-        ActionUtils.set_text(search, "AnkitFeedAutomation");
+        ActionUtils.set_text(search, FeedTemplateName +"Edit");
         String verifyDeleteFeedTemplate = ActionUtils.get_text(verifyDeleteFeed);
         System.out.println(verifyDeleteFeedTemplate);
         soft.assertEquals(verifyDeleteFeedTemplate,"No matching records found");
@@ -462,5 +460,4 @@ public class FeedTemplatePage extends BaseLibrary {
         ActionUtils.click(backButton);
         soft.assertAll();
     }
-
 }

@@ -2,20 +2,25 @@ package scraperPages;
 
 import applicationUtility.ActionUtils;
 import baselibrary.BaseLibrary;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-public class CMSTemplatePage extends BaseLibrary {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+public class CMSTemplatePage extends BaseLibrary {
     ActionUtils actionUtils = new ActionUtils();
     String CMSTemplateName= "AutomationCMSTest";
     public CMSTemplatePage(){
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "//ul//li//a[@href='https://dev.pheonix.paktolus.io/admin/cms']")
+    @FindBy(xpath = "//ul//li//a[@href='https://"+env+".pheonix.paktolus.io/admin/cms']")
     WebElement CMSTemplate;
     @FindBy(xpath = "//a[contains(text(),'Add Template')]")
     WebElement addTemplate;
@@ -55,22 +60,36 @@ public class CMSTemplatePage extends BaseLibrary {
     WebElement backButton;
     @FindBy(xpath = "//span[@id='select2-pagination_type-container']")
     WebElement paginationType;
+    @FindBy(xpath = "(//tbody//tr[4]//td//div//span[@class='select2-selection__rendered'])[3]")
+    WebElement fetchAPIValues;
+    @FindBy(xpath = "//table//tr//th//i")
+    WebElement EnableScraperToolTip;
 
 
     public void addCMSTemplate() throws InterruptedException {
         ActionUtils.waitFor(5);
         ActionUtils.click(CMSTemplate);
         actionUtils.screenshot();
-//        tradeInValue.sendKeys(Keys.BACK_SPACE);
-//        ActionUtils.waitFor(3);
         ActionUtils.click(addTemplate);
-        ActionUtils.set_text(CMSTitleName, "AutomationCMSTest");
+        String pageTitle = ActionUtils.get_text(pageHeader);
+        Assert.assertEquals(pageTitle, "Add CMS Template");
+        ActionUtils.set_text(CMSTitleName, CMSTemplateName);
         actionUtils.screenshot();
+        List<WebElement> columnCount = driver.findElements(By.xpath("//table//tr//th"));
+        List<String> columnNames = new ArrayList<>();
+        for (int i=0; i<columnCount.size(); i++){
+            String columnName = columnCount.get(i).getText();
+            columnNames.add(columnName);
+        }
+        List<String> expectedColumnNames = Arrays.asList("Attribute", "Type","Value", "Enable Scraper", "Fetch API", "Remove");
+        Assert.assertEquals(columnNames,expectedColumnNames);
+        System.out.println("Total Column is: "+columnCount.size());
+        System.out.println(columnNames);
+        ActionUtils.verifyToolTipValue(EnableScraperToolTip, "data-bs-original-title", "Enabling this toggle means the attribute will be scraped.");
         ActionUtils.scroll_till_element(pagination);
         ActionUtils.set_text(pagination,"ul.pagination li:last-child a");
         ActionUtils.set_text(vehicleCard,"h2.vehicle-card-title  a");
         addCMSAttribute();
-
     }
 
     public void addCMSAttribute() throws InterruptedException {
@@ -91,12 +110,22 @@ public class CMSTemplatePage extends BaseLibrary {
         ActionUtils.scroll_till_element(addAttribute);
         ActionUtils.click(addAttribute);
         ActionUtils.waitFor(2);
-        ActionUtils.set_text(selectAttributeName, "Price");
+        ActionUtils.set_text(selectAttributeName, "Body Style");
         ActionUtils.click(selectHighlightedText);
         ActionUtils.click(selectType);
         ActionUtils.set_text(selectAttributeName, "Xpath");
         ActionUtils.click(selectHighlightedText);
         ActionUtils.set_text(value2, "//button[contains(text(),'Add')])");
+        ActionUtils.click(fetchAPIValues);
+        List<WebElement> fetchAPICount = driver.findElements(By.xpath("//span[@class='select2-results']//ul//li"));
+        List<String> fetchAPINames = new ArrayList<>();
+        for (int i=0; i<fetchAPICount.size(); i++){
+            String Name = fetchAPICount.get(i).getText();
+            fetchAPINames.add(Name);
+        }
+        System.out.println(fetchAPINames);
+        List<String> expectedFetchAPINames = Arrays.asList("API First", "Scraper First", "API Not Available");
+        Assert.assertEquals(fetchAPINames,expectedFetchAPINames,"The fetched API Values names matched the expected names.");
         actionUtils.screenshot();
         ActionUtils.scroll_till_element(save);
         ActionUtils.click(save);
@@ -106,12 +135,12 @@ public class CMSTemplatePage extends BaseLibrary {
     public void viewCMSTemplate() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
         ActionUtils.waitFor(3);
-        ActionUtils.set_text(search, "AutomationCMSTest");
+        ActionUtils.set_text(search, CMSTemplateName);
         ActionUtils.waitFor(3);
         ActionUtils.click(view);
         String viewPageHeader = ActionUtils.get_text(pageHeader);
         System.out.println(viewPageHeader);
-        soft.assertEquals(viewPageHeader, "View CMS Template: AutomationCMSTest");
+        soft.assertEquals(viewPageHeader, "View CMS Template: "+ CMSTemplateName);
         actionUtils.screenshot();
         ActionUtils.waitFor(3);
         ActionUtils.click(backButton);
@@ -124,16 +153,16 @@ public class CMSTemplatePage extends BaseLibrary {
     WebElement removeAttribute2;
     public void editFeedTemplate() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
-        ActionUtils.set_text(search, "AutomationCMSTest");
+        ActionUtils.set_text(search, CMSTemplateName);
         ActionUtils.waitFor(3);
         ActionUtils.click(edit);
         String editPageHeader = ActionUtils.get_text(pageHeader);
         System.out.println(editPageHeader);
-        soft.assertEquals(editPageHeader, "Edit CMS Template: AutomationCMSTest");
+        soft.assertEquals(editPageHeader, "Edit CMS Template: "+CMSTemplateName);
         actionUtils.screenshot();
         ActionUtils.waitFor(3);
         ActionUtils.clear(CMSTitleName);
-        ActionUtils.set_text(CMSTitleName, "AutomationEditCMSTest");
+        ActionUtils.set_text(CMSTitleName, CMSTemplateName+"Edit");
         ActionUtils.scroll_till_element(paginationType);
         ActionUtils.click(paginationType);
         ActionUtils.set_text(setInput, "Scroll");
@@ -152,7 +181,7 @@ public class CMSTemplatePage extends BaseLibrary {
     WebElement cmsStatusToggleButton;
     public void deactivateCMSTemplate() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
-        ActionUtils.set_text(search, "AutomationEditCMSTest");
+        ActionUtils.set_text(search, CMSTemplateName+"Edit");
         ActionUtils.waitFor(3);
         ActionUtils.click(edit);
         ActionUtils.click(cmsStatusToggleButton);
@@ -161,7 +190,7 @@ public class CMSTemplatePage extends BaseLibrary {
         ActionUtils.scroll_till_element(save);
         ActionUtils.click(save);
         ActionUtils.waitFor(3);
-        ActionUtils.set_text(search, "AutomationEditCMSTest");
+        ActionUtils.set_text(search, CMSTemplateName+"Edit");
         String Status= ActionUtils.get_text(status);
         System.out.println("Status is :"+ Status);
         soft.assertEquals(Status, "Inactive");
@@ -173,7 +202,7 @@ public class CMSTemplatePage extends BaseLibrary {
         ActionUtils.scroll_till_element(save);
         ActionUtils.click(save);
         ActionUtils.waitFor(3);
-        ActionUtils.set_text(search, "AutomationEditCMSTest");
+        ActionUtils.set_text(search, CMSTemplateName+"Edit");
         String changeStatus= ActionUtils.get_text(status);
         System.out.println("Status is :"+ changeStatus);
         soft.assertEquals(changeStatus, "Active");
@@ -193,9 +222,14 @@ public class CMSTemplatePage extends BaseLibrary {
     WebElement yesButton;
     @FindBy(xpath = "//tr//td[contains(text(),'No matching records found')]")
     WebElement verifyDeleteCMS;
+    @FindBy(xpath = "(//form[@name='confirmDeleteCmsFrm']//div//p)[1]")
+    WebElement deleteMessage;
+    @FindBy(xpath = "//div[@class='modal-header position-relative']//following-sibling::div//div[@class='col-md-12 col-sm-12 control-label']")
+    WebElement deactivateMessage;
+
     public void removeCMSTemplate() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
-        ActionUtils.set_text(search, "AutomationEditCMSTest");
+        ActionUtils.set_text(search, CMSTemplateName+"Edit");
         ActionUtils.waitFor(5);
         ActionUtils.click(delete);
         ActionUtils.waitFor(5);
@@ -215,7 +249,7 @@ public class CMSTemplatePage extends BaseLibrary {
 //        soft.assertEquals(deleteFeedToastMessage,"Feed Template Delete Successfully");
 //        System.out.println("Feed Template Delete Message "+ deleteFeedToastMessage);
         ActionUtils.waitFor(10);
-        ActionUtils.set_text(search, "AutomationEditCMSTest");
+        ActionUtils.set_text(search, CMSTemplateName+"Edit");
         String verifyDeleteFeedTemplate = ActionUtils.get_text(verifyDeleteCMS);
         System.out.println(verifyDeleteFeedTemplate);
         soft.assertEquals(verifyDeleteFeedTemplate,"No matching records found");
@@ -224,6 +258,42 @@ public class CMSTemplatePage extends BaseLibrary {
         soft.assertAll();
     }
 
+    public void removeUsedCMSTemplate() throws InterruptedException {
+        SoftAssert soft = new SoftAssert();
+        ActionUtils.clear(search);
+        ActionUtils.set_text(search, "AnkitTest1");
+        ActionUtils.waitFor(3);
+        ActionUtils.click(delete);
+        String warningPopUp = ActionUtils.get_text(warningScreenPopUp);
+        soft.assertEquals(warningPopUp, "Warning!");
+        ActionUtils.waitFor(3);
+        String deleteUsedFeedMessage = ActionUtils.get_text(deleteMessage);
+        System.out.println(deleteUsedFeedMessage);
+        actionUtils.screenshot();
+        ActionUtils.waitFor(3);
+        ActionUtils.click(crossIcon);
+        soft.assertAll();
+    }
 
-
+    public void deactivateUsedCMTemplate() throws InterruptedException {
+        SoftAssert soft = new SoftAssert();
+        ActionUtils.clear(search);
+        ActionUtils.set_text(search, "AnkitTest1");
+        ActionUtils.click(edit);
+        String editPageHeader = ActionUtils.get_text(pageHeader);
+        System.out.println(editPageHeader);
+        soft.assertEquals(editPageHeader, "Edit CMS Template: "+"AnkitTest1");
+        ActionUtils.waitFor(3);
+        ActionUtils.click(cmsStatusToggleButton);
+        String warningPopUp = ActionUtils.get_text(warningScreenPopUp);
+        soft.assertEquals(warningPopUp, "Warning!");
+        String deactivateUsedFeedMessage = ActionUtils.get_text(deactivateMessage);
+        System.out.println(deactivateUsedFeedMessage);
+        actionUtils.screenshot();
+        ActionUtils.waitFor(3);
+        ActionUtils.click(crossIcon);
+        ActionUtils.waitFor(3);
+        ActionUtils.click(backButton);
+        soft.assertAll();
+    }
 }

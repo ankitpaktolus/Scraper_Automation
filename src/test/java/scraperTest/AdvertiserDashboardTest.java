@@ -17,6 +17,7 @@ public class AdvertiserDashboardTest extends BaseLibrary
     public void verifyAdvertiserDashboard() throws InterruptedException {
         advertiserDashboardPage = new AdvertiserDashboardPage();
         advertiserDashboardPage.advertiserDashboard();
+//        advertiserDashboardPage.verifyStoreName();
         actionUtils.screenshot();
     }
 

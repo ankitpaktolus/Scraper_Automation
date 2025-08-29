@@ -209,6 +209,7 @@ public class AlexanderBGCPage extends BaseLibrary
         ActionUtils.waitFor(3);
         ActionUtils.click(yesButton);
     }
+
     public void deleteFeedSubscription() throws InterruptedException {
         ActionUtils.waitFor(3);
         ActionUtils.scroll_till_element(deleteFeedSubscription);
@@ -217,6 +218,4 @@ public class AlexanderBGCPage extends BaseLibrary
         ActionUtils.waitFor(3);
         ActionUtils.click(yesButton);
     }
-
-
 }
