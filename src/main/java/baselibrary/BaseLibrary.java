@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import java.time.Duration;
 
 public class BaseLibrary
@@ -12,6 +13,7 @@ public class BaseLibrary
 
     public static WebDriver driver;
     public static final String env = "staging";
+    public static String fileDownloadPath = "C:\\Users\\AnkitKumar\\Downloads";
     public void getLaunchUrl(String browser) {
 
         if (browser.equalsIgnoreCase("Chrome")) {

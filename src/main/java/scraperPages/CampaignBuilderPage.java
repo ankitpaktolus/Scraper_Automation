@@ -15,7 +15,7 @@ public class CampaignBuilderPage extends BaseLibrary {
     public CampaignBuilderPage(){
         PageFactory.initElements(driver,this);
     }
-    @FindBy(xpath = "//ul//li//a[@href='https://dev.pheonix.paktolus.io/admin/campaign']")
+    @FindBy(xpath = "//ul//li//a[@href='https://"+env+".pheonix.paktolus.io/admin/campaign']")
     WebElement campaignBuilder;
     @FindBy(xpath = "//h1[contains(text(),'Campaign Builder')]")
     WebElement campaign_builder_header_title;
@@ -163,9 +163,11 @@ public class CampaignBuilderPage extends BaseLibrary {
         ActionUtils.waitFor(2);
         ActionUtils.click(deleteNegativeKeywordLists);
         actionUtils.screenshot();
+        ActionUtils.waitFor(2);
         ActionUtils.click(crossIcon);
         ActionUtils.waitFor(2);
         ActionUtils.click(deleteNegativeKeywordLists);
+        ActionUtils.waitFor(2);
         ActionUtils.click(cancelButton);
         ActionUtils.waitFor(2);
         ActionUtils.click(deleteNegativeKeywordLists);
@@ -349,7 +351,4 @@ public class CampaignBuilderPage extends BaseLibrary {
         ActionUtils.scroll_till_element(backButton);
         ActionUtils.click(backButton);
     }
-
-
-
 }

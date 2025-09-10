@@ -12,7 +12,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
+import java.io.File;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class ActionUtils extends BaseLibrary
 {
@@ -80,12 +83,59 @@ public class ActionUtils extends BaseLibrary
         ActionUtils.select_by_value(ele, pageSize);
     }
 
-    public static void verifyToolTipValue(WebElement element, String getAttributeName, String verifyText){
+    public static void verifyToolTipValue(WebElement element, String verifyText){
         SoftAssert soft = new SoftAssert();
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
-        String Text = element.getAttribute(getAttributeName);
+        String Text = element.getAttribute("data-bs-original-title");
         soft.assertEquals(Text,verifyText);
         soft.assertAll();
+    }
+
+    public static void verifyDownloadCSVFile(WebElement ele, String downloadPath) throws InterruptedException {
+        SoftAssert soft = new SoftAssert();
+        click(ele);
+        ActionUtils.waitFor(5);
+        File csvFile = getLatestFile(downloadPath);
+        if (csvFile != null && csvFile.getName().endsWith(".csv")) {
+            System.out.println("CSV downloaded: " + csvFile.getName());
+            if (csvFile.delete()) {
+                System.out.println("CSV deleted successfully.");
+            } else {
+                System.out.println("CSV deletion failed!");
+            }
+        } else {
+            soft.fail("CSV file not downloaded!");
+        }
+        soft.assertAll();
+    }
+
+    public static void verifyDownloadXLSXFile(WebElement ele, String downloadPath) throws InterruptedException {
+        SoftAssert soft = new SoftAssert();
+        click(ele);
+        ActionUtils.waitFor(5);
+        File xlsxFile = getLatestFile(downloadPath);
+        if (xlsxFile != null && xlsxFile.getName().endsWith(".xlsx")) {
+            System.out.println("XLSX downloaded: " + xlsxFile.getName());
+            if (xlsxFile.delete()) {
+                System.out.println("XLSX deleted successfully.");
+            } else {
+                System.out.println("XLSX deletion failed!");
+            }
+        } else {
+            soft.fail("XLSX file not downloaded!");
+        }
+        soft.assertAll();
+    }
+
+    public static File getLatestFile(String dirPath) {
+        File dir = new File(dirPath);
+        File[] files = dir.listFiles();
+        if (files == null || files.length == 0) {
+            return null;
+        }
+        return Arrays.stream(files)
+                .max(Comparator.comparingLong(File::lastModified))
+                .orElse(null);
     }
 }

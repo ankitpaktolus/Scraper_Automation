@@ -15,6 +15,8 @@ import java.util.List;
 
 public class CMSTemplatePage extends BaseLibrary {
     ActionUtils actionUtils = new ActionUtils();
+//    Random random = new Random();
+//    int number = random.nextInt(100);
     String CMSTemplateName= "AutomationCMSTest";
     public CMSTemplatePage(){
         PageFactory.initElements(driver,this);
@@ -64,6 +66,8 @@ public class CMSTemplatePage extends BaseLibrary {
     WebElement fetchAPIValues;
     @FindBy(xpath = "//table//tr//th//i")
     WebElement EnableScraperToolTip;
+    @FindBy(xpath = "//div[@class='toast-title']")
+    WebElement toasterMessage;
 
 
     public void addCMSTemplate() throws InterruptedException {
@@ -85,7 +89,7 @@ public class CMSTemplatePage extends BaseLibrary {
         Assert.assertEquals(columnNames,expectedColumnNames);
         System.out.println("Total Column is: "+columnCount.size());
         System.out.println(columnNames);
-        ActionUtils.verifyToolTipValue(EnableScraperToolTip, "data-bs-original-title", "Enabling this toggle means the attribute will be scraped.");
+        ActionUtils.verifyToolTipValue(EnableScraperToolTip,  "Enabling this toggle means the attribute will be scraped.");
         ActionUtils.scroll_till_element(pagination);
         ActionUtils.set_text(pagination,"ul.pagination li:last-child a");
         ActionUtils.set_text(vehicleCard,"h2.vehicle-card-title  a");
@@ -125,8 +129,10 @@ public class CMSTemplatePage extends BaseLibrary {
         }
         System.out.println(fetchAPINames);
         List<String> expectedFetchAPINames = Arrays.asList("API First", "Scraper First", "API Not Available");
-        Assert.assertEquals(fetchAPINames,expectedFetchAPINames,"The fetched API Values names matched the expected names.");
+        Assert.assertEquals(fetchAPINames,expectedFetchAPINames,"The fetched API Values names not matched the expected names.");
         actionUtils.screenshot();
+        ActionUtils.set_text(selectAttributeName, "Scraper First");
+        ActionUtils.click(selectHighlightedText);
         ActionUtils.scroll_till_element(save);
         ActionUtils.click(save);
 //        soft.assertAll();

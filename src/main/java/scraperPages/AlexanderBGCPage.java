@@ -17,6 +17,7 @@ public class AlexanderBGCPage extends BaseLibrary
     ActionUtils actionUtils = new ActionUtils();
 
     String AdvertiserName = "Alexander BGC";
+    String  inputFeedName = "Automation Feed Test";
     public AlexanderBGCPage(){
         PageFactory.initElements(driver,this);
     }
@@ -37,12 +38,12 @@ public class AlexanderBGCPage extends BaseLibrary
     WebElement inventoryFeeds;
     @FindBy(xpath = "//div[@class='feed-cms mb-3']")
     WebElement UseCMS;
-    @FindBy(xpath = "//a[@href='https://dev.pheonix.paktolus.io/admin/advertisement/advertiser/18/view']")
+    @FindBy(xpath = "//a[@data-bs-original-title='View']")
     WebElement viewAdvertiser;
     @FindBy(xpath = "//h3[@class='page-header']")
     public static WebElement pageHeader;
     @FindBy(xpath = "//a[@aria-label='Edit']")
-    public static WebElement edit;
+    public static WebElement editAdvertiserIcon;
     @FindBy(xpath = "//h3[@class='page-header']//a")
     public static WebElement backButton;
     @FindBy(xpath = "//h1[@class='page-header']//a")
@@ -73,6 +74,7 @@ public class AlexanderBGCPage extends BaseLibrary
     public void viewAdvertiser() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
         ActionUtils.waitFor(5);
+        ActionUtils.verifyToolTipValue(viewAdvertiser, "View");
         ActionUtils.click(viewAdvertiser);
         String PageHeader = ActionUtils.get_text(pageHeader);
         soft.assertEquals(PageHeader,"View Advertiser");
@@ -87,7 +89,8 @@ public class AlexanderBGCPage extends BaseLibrary
     public void editAdvertiser() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
         ActionUtils.waitFor(5);
-        ActionUtils.click(edit);
+        ActionUtils.verifyToolTipValue(editAdvertiserIcon, "Edit");
+        ActionUtils.click(editAdvertiserIcon);
         String PageHeader = ActionUtils.get_text(pageHeader);
         soft.assertEquals(PageHeader,"Edit Advertiser");
         ActionUtils.waitFor(5);
@@ -101,6 +104,7 @@ public class AlexanderBGCPage extends BaseLibrary
     public void viewFeeds() throws InterruptedException {
         SoftAssert soft = new SoftAssert();
         ActionUtils.waitFor(5);
+        ActionUtils.verifyToolTipValue(viewFeeds, "Feeds");
         ActionUtils.click(viewFeeds);
         String PageHeader = ActionUtils.get_text(inventoryFeeds);
         soft.assertEquals(PageHeader,"Dynamic Display Feeds");
@@ -141,7 +145,7 @@ public class AlexanderBGCPage extends BaseLibrary
         ActionUtils.click(addFeedSubscriptionButton);
         ActionUtils.waitFor(3);
         actionUtils.screenshot();
-        ActionUtils.set_text(feedName,"Automation Feed Test");
+        ActionUtils.set_text(feedName,inputFeedName);
         ActionUtils.select_by_value(feedType,"2");
         ActionUtils.waitFor(3);
         ActionUtils.click(selectFeedFormat);
@@ -165,22 +169,23 @@ public class AlexanderBGCPage extends BaseLibrary
         soft.assertAll();
     }
 
-    @FindBy(xpath = "//div[contains(text(),'Automation Feed Test')]//following-sibling::div//a[1]")
+    @FindBy(xpath = "//div[contains(text(),'Automation Feed Test')]//following-sibling::div//a[1]//img")
     WebElement editFeedSubscription;
     @FindBy(xpath = "//label[@for='setMilesForNewVehicle']")
     WebElement setMilesValueField;
-    @FindBy(xpath = "//div[contains(text(),'Automation Feed Test')]//following-sibling::div//a[2]")
+    @FindBy(xpath = "//div[contains(text(),'Automation Feed Test')]//following-sibling::div//a[2]//img")
     WebElement viewFeedSubscription;
-    @FindBy(xpath = "//div[contains(text(),'Automation Feed Test')]//following-sibling::div//a[3]")
+    @FindBy(xpath = "//div[contains(text(),'Automation Feed Test')]//following-sibling::div//a[3]//img")
     WebElement cloneFeedSubscription;
     @FindBy(xpath = "//div[contains(text(),'Automation Feed Test copy')]//following-sibling::div//a[5]")
     WebElement removeClonedFeedSubscription;
-    @FindBy(xpath = "//div[contains(text(),'Automation Feed Test')]//following-sibling::div//a[5]")
+    @FindBy(xpath = "//div[contains(text(),'Automation Feed Test')]//following-sibling::div//a[5]//img")
     WebElement deleteFeedSubscription;
     @FindBy(xpath = "(//button[contains(text(),'Yes')])[1]")
     WebElement yesButton;
     public void editFeedSubscription() throws InterruptedException {
         ActionUtils.scroll_till_element(editFeedSubscription);
+        ActionUtils.verifyToolTipValue(editFeedSubscription, "Edit feed");
         ActionUtils.click(editFeedSubscription);
         actionUtils.screenshot();
         ActionUtils.scroll_till_element(setMilesValueField);
@@ -191,6 +196,7 @@ public class AlexanderBGCPage extends BaseLibrary
 
     public void viewFeedSubscription() throws InterruptedException {
         ActionUtils.scroll_till_element(viewFeedSubscription);
+        ActionUtils.verifyToolTipValue(viewFeedSubscription, "Advertiser Inventory");
         ActionUtils.click(viewFeedSubscription);
         ActionUtils.selectRecordPerPage(recordPerPage,"100");
         actionUtils.screenshot();
@@ -198,6 +204,7 @@ public class AlexanderBGCPage extends BaseLibrary
 
     public void cloneFeedSubscription() throws InterruptedException {
         ActionUtils.scroll_till_element(cloneFeedSubscription);
+        ActionUtils.verifyToolTipValue(cloneFeedSubscription, "Clone feed");
         ActionUtils.click(cloneFeedSubscription);
         actionUtils.screenshot();
         ActionUtils.waitFor(3);
@@ -213,6 +220,7 @@ public class AlexanderBGCPage extends BaseLibrary
     public void deleteFeedSubscription() throws InterruptedException {
         ActionUtils.waitFor(3);
         ActionUtils.scroll_till_element(deleteFeedSubscription);
+        ActionUtils.verifyToolTipValue(deleteFeedSubscription, "Delete feed");
         ActionUtils.click(deleteFeedSubscription);
         actionUtils.screenshot();
         ActionUtils.waitFor(3);
