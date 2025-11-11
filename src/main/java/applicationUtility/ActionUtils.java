@@ -24,6 +24,11 @@ public class ActionUtils extends BaseLibrary
         element.click();
     }
 
+    public static void jsClick(WebElement element){
+        visibilityOfElement(element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    }
+
     public static void set_text(WebElement element, String text){
         visibilityOfElement(element);
         element.sendKeys(text);
@@ -137,5 +142,10 @@ public class ActionUtils extends BaseLibrary
         return Arrays.stream(files)
                 .max(Comparator.comparingLong(File::lastModified))
                 .orElse(null);
+    }
+
+    public static void zoomOut(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.body.style.zoom='80%'");
     }
 }

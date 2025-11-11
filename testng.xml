@@ -4,12 +4,13 @@
     <test verbose="2" preserve-order="true" name="C:/Users/rosha/IdeaProjects/ALF">
         <classes>
             <class name="scraperTest.LoginTest"/>
-            <class name="scraperTest.FeedTemplateTest"/>
-            <class name="scraperTest.CMSTemplateTest"/>
-            <class name="scraperTest.AdvertiserDashboardTest"/>
-            <class name="scraperTest.AlexanderBGCTest"/>
+<!--            <class name="scraperTest.FeedTemplateTest"/>-->
+<!--            <class name="scraperTest.CMSTemplateTest"/>-->
+<!--            <class name="scraperTest.AdvertiserDashboardTest"/>-->
+<!--            <class name="scraperTest.AlexanderBGCTest"/>-->
 <!--            <class name="scraperTest.CampaignBuilderTest"/>-->
-<!--            <class name="scraperTest.SearchTest"/>-->
+<!--            <class name="scraperTest.DemoTest"/>-->
+            <class name="notificationTest.NotificationSettingsTest"/>
         </classes>
     </test>
 </suite>
